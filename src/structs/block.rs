@@ -8,11 +8,12 @@ pub struct Block {
     pub data: String,
     pub previous_hash: String,
     pub hash: String,
+    pub validator: String,
 }
 
 impl Block {
     // Block constructor
-    pub fn new(index: u32, data: String, previous_hash: String) -> Block {
+    pub fn new(index: u32, data: String, previous_hash: String, validator: String) -> Block {
         let timestamp = Utc::now().to_rfc3339();
         let hash = Block::calculate_hash(index, &timestamp, &data, &previous_hash);
 
@@ -22,6 +23,7 @@ impl Block {
             data,
             previous_hash,
             hash,
+            validator,
         }
     }
 
